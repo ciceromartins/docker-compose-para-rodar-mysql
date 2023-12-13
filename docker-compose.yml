@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user123
+    ports:
+      - "3306:3306"
+    restart: always
+
+  adminer:
+    image: adminer
+    container_name: adminer-youtube
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - mysql
